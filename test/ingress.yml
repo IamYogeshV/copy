@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: kong
+spec:
+  controller: ingress-controllers.konghq.com/kong
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: yogisapp
+spec:
+  ingressClassName: kong
+  rules:
+  - host: asp.info
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: yogisapp
+            port:
+              number: 80

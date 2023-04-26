@@ -1,0 +1,14 @@
+kind: Service                             
+apiVersion: v1
+metadata:
+  name: yogisapp
+  labels:
+    app: yogisapp
+spec:
+  ports:
+    - port: 80                              
+      targetPort: 5000                    
+      nodePort: 31111
+  selector:
+    app: yogisapp                
+  type: NodePort                  

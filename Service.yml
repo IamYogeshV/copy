@@ -1,0 +1,15 @@
+kind: Service                             
+apiVersion: v1
+metadata:
+  name: yogis
+  labels:
+    app: yogis
+spec:
+  ports:
+    - port: 32676
+      protocol: TCP         
+      targetPort: 5000                    
+      nodePort: 31201
+  selector:
+    app: yogis                   
+  type: NodePort                  

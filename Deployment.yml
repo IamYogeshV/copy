@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: yogis
+spec:
+   replicas: 1
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: yogis
+   template:
+      metadata:
+        labels:
+          app: yogis
+      spec:
+       containers:
+        - name: yogis
+          image: iamyogeshv/asp.net:latest
+
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
